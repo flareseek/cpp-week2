@@ -22,12 +22,17 @@ void play(int SIZE) {
 }
 
 void getAnswerNumbers(int answerNumbers[], int SIZE) {
+    int checkNumbers[10];
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(0, 9);
     for(int index = 0; index < SIZE; index++) {
         int number = dis(gen);
+        while(checkNumbers[number] != 0) {
+            number = dis(gen);
+        }
         answerNumbers[index] = number;
+        checkNumbers[number] ++;
     }
 }
 
