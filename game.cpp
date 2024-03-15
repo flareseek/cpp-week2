@@ -29,13 +29,6 @@ void getAnswerNumbers(int answerNumbers[], int SIZE) {
         int number = dis(gen);
         answerNumbers[index] = number;
     }
-    
-    std::cout << "Answer is ";
-    for(int index = 0; index < SIZE; index++) {
-        std::cout << answerNumbers[index];
-    }
-
-    std::cout << std::endl;
 }
 
 void getUserNumbers(int array[], int SIZE) {
