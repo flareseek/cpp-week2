@@ -3,6 +3,7 @@
 
 extern int strikes;
 extern int balls;
+extern int ANSWERCOUNT;
 
 void getNumbers(int array[], int size);
 void getAnswerNumbers(int array[], int SIZE);
@@ -14,7 +15,8 @@ void play(int SIZE) {
     int answerNumbers[SIZE], userNumbers[SIZE];
     getAnswerNumbers(answerNumbers, SIZE);
 
-    while (strikes < SIZE) {
+    while (strikes < SIZE && ANSWERCOUNT > 0) {
+        ANSWERCOUNT --;
         getUserNumbers(userNumbers, SIZE);
         setScores(userNumbers, answerNumbers, SIZE);
         printStatus(SIZE);
@@ -65,6 +67,10 @@ void setScores(int userNumbers[], int answerNumbers[], int size) {
 }
 
 void printStatus(int SIZE) {
-    if (strikes == SIZE) std::cout << "You win!" << std::endl;
-    else std::cout << "Strikes: " << strikes << ", " << "Balls: " << balls << std::endl;
+    if (ANSWERCOUNT < 1) std::cout << "You lose!" << std::endl;
+    else if (strikes == SIZE) std::cout << "You win!" << std::endl;
+    else {
+        std::cout << "Strikes: " << strikes << ", " << "Balls: " << balls << std::endl;
+        std::cout << ANSWERCOUNT << " chances left." << std::endl;
+    } 
 }
